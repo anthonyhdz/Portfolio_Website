@@ -158,6 +158,18 @@
   --Opacity-80:  0.80;
   --Opacity-100: 1;
 
+  /* Motion — durations */
+  --duration-instant: 100ms;
+  --duration-fast:    150ms;
+  --duration-base:    200ms;
+  --duration-slow:    300ms;
+  --duration-slower:  500ms;
+
+  /* Motion — easing */
+  --ease-default: ease;
+  --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out:  cubic-bezier(0.4, 0, 0.2, 1);
+
   /* Shadow base */
   --Shadow-color: var(--Color-Base-Black);
 }
@@ -243,6 +255,18 @@
   --focus-ring:        var(--Color-Focus-500);
   --focus-ring-offset: var(--Color-Neutral-0);
 
+  /* Motion — transitions */
+  --transition-color:   color var(--duration-base) var(--ease-default);
+  --transition-bg:      background-color var(--duration-base) var(--ease-default);
+  --transition-opacity: opacity var(--duration-base) var(--ease-default);
+  --transition-shadow:  box-shadow var(--duration-base) var(--ease-default);
+  --transition-ui:      color var(--duration-base) var(--ease-default), background-color var(--duration-base) var(--ease-default);
+  --transition-media:   filter var(--duration-base) var(--ease-default), opacity var(--duration-base) var(--ease-default);
+
+  /* Layout */
+  --content-max:  1280px;
+  --page-padding: clamp(24px, 8vw, 320px);
+
   /* Spacing */
   --space-page-margin: var(--Scale-64);
   --space-section-gap: var(--Scale-96);
@@ -309,9 +333,9 @@
   --type-eyebrow-font-weight:    var(--Font-Weight-Medium);
   --type-eyebrow-line-height:    var(--Font-Line-height-base);
   --type-eyebrow-letter-spacing: var(--Scale-1);
-  --type-caption-font-size:      var(--Scale-16);
+  --type-caption-font-size:      var(--Font-Font-size-sm);
   --type-caption-font-weight:    var(--Font-Weight-Regular);
-  --type-caption-line-height:    var(--Font-Line-height-lg);
+  --type-caption-line-height:    var(--Font-Line-height-sm);
   --type-quote-font-size:        var(--Scale-22);
   --type-quote-font-weight:      var(--Font-Weight-Regular);
   --type-quote-line-height:      var(--Font-Line-height-3xl);
@@ -325,7 +349,7 @@
   --type-button-font-weight:     var(--Font-Weight-Regular);
   --type-button-line-height:     var(--Font-Line-height-sm);
 
-  /* Shadows */
+  /* Shadows — decomposed parts */
   --shadow-sm-color:   var(--Shadow-color);
   --shadow-sm-offset-y:var(--Scale-1);
   --shadow-sm-blur:    var(--Scale-4);
@@ -346,6 +370,12 @@
   --shadow-xl-blur:    var(--Scale-24);
   --shadow-xl-spread:  var(--Scale-0);
   --shadow-xl-opacity: var(--Opacity-20);
+
+  /* Shadows — composite (ready to use in box-shadow) */
+  --shadow-sm: 0 1px 4px  rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 8px  rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.20);
+  --shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.20);
 }
 
 /* ==============================================
@@ -353,6 +383,7 @@
    ============================================== */
 :root {
   /* Nav */
+  --nav-shadow-scrolled:  0 2px 8px rgba(0, 0, 0, 0.08);
   --nav-bg:               var(--bg-primary);
   --nav-bg-scrolled:      var(--bg-surface);
   --nav-border:           var(--border-default);

@@ -4,6 +4,19 @@ A running record of working sessions — decisions made, context established, an
 
 ---
 
+## 2026-03-30
+
+### What we covered
+- Reviewed SESSIONS.md — user asked for a summary of what it is and its purpose
+
+### Decisions made
+- No changes made this session
+
+### Open threads
+- Deployment visibility of SESSIONS.md and CLAUDE.md still unresolved (carried over from 2026-03-19)
+
+---
+
 ## 2026-03-19
 
 ### What we covered

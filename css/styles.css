@@ -2,10 +2,8 @@
    LAYOUT TOKENS (non-color, not in variables.css)
    ============================================== */
 :root {
-  --font-serif:   var(--Font-Font-family-Serif);
-  --font-sans:    var(--Font-Font-family-Sans);
-  --content-max:  1280px;
-  --page-padding: clamp(24px, 8vw, 320px);
+  --font-serif: var(--Font-Font-family-Serif);
+  --font-sans:  var(--Font-Font-family-Sans);
 }
 
 /* ==============================================
@@ -54,10 +52,10 @@ ul  { list-style: none; }
   align-items: center;
   justify-content: space-between;
   padding: var(--Scale-16) var(--page-padding);
-  transition: box-shadow 0.2s;
+  transition: var(--transition-shadow);
 }
 
-.nav.is-scrolled { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
+.nav.is-scrolled { box-shadow: var(--nav-shadow-scrolled); }
 
 
 /* Shared nav link typography */
@@ -68,7 +66,7 @@ ul  { list-style: none; }
   font-size: var(--type-nav-link-font-size);
   line-height: var(--type-nav-link-line-height);
   color: var(--nav-link-text);
-  transition: color 0.2s;
+  transition: var(--transition-color);
 }
 
 .nav-logo:hover          { color: var(--nav-logo-text); }
@@ -329,7 +327,7 @@ ul  { list-style: none; }
   font-size: var(--type-button-font-size);
   line-height: var(--Font-Line-height-base);
   cursor: pointer;
-  transition: opacity 0.2s, background-color 0.2s;
+  transition: var(--transition-opacity), var(--transition-bg);
 }
 
 .btn-primary {
@@ -575,7 +573,7 @@ ul  { list-style: none; }
   object-fit: contain;
   filter: grayscale(100%);
   opacity: 0.65;
-  transition: filter 0.2s, opacity 0.2s;
+  transition: var(--transition-media);
 }
 
 .client-logo img:hover {
@@ -784,7 +782,7 @@ ul  { list-style: none; }
   font-size: var(--type-label-md-font-size);
   line-height: var(--type-label-md-line-height);
   color: var(--case-study-nav-link-text);
-  transition: color 0.2s, background-color 0.2s;
+  transition: var(--transition-ui);
 }
 
 .cs-nav-link::before {
@@ -795,7 +793,7 @@ ul  { list-style: none; }
   border-radius: 2px;
   background-color: transparent;
   flex-shrink: 0;
-  transition: background-color 0.2s;
+  transition: var(--transition-bg);
 }
 
 .cs-nav-link:hover {
