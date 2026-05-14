@@ -231,11 +231,6 @@
   --action-accent-bg-hover: var(--Color-Accent-600);
   --action-accent-text:     var(--Color-Neutral-0);
 
-  /* Actions — ghost */
-  --action-ghost-bg:       transparent;
-  --action-ghost-bg-hover: var(--Color-Neutral-100);
-  --action-ghost-text:     var(--Color-Neutral-700);
-
   /* Actions — disabled */
   --action-disabled-bg:           var(--Color-Neutral-200);
   --action-disabled-text:         var(--Color-Neutral-400);
