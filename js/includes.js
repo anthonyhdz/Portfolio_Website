@@ -1,9 +1,11 @@
 /**
  * Shared includes loader
  * ──────────────────────
- * Loads nav.html and footer.html from /includes, replaces placeholder
+ * Loads nav.partial and footer.partial from /includes, replaces placeholder
  * elements, sets the active nav link, and wires up scroll-shadow +
- * mobile-menu behaviour.
+ * mobile-menu behaviour. The .partial extension (instead of .html) prevents
+ * VS Code Live Server from injecting its websocket script into the fragment,
+ * which would otherwise break the markup mid-element.
  *
  * Usage — add to every page:
  *   <div id="nav-placeholder"></div>        (where the nav should go)
@@ -24,12 +26,26 @@
     if (!el) return;
 
     fetch(base + 'includes/' + file)
-      .then(function (r) { return r.text(); })
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.text();
+      })
       .then(function (html) {
         // Replace {base} path tokens with the actual base path
         html = html.replace(/\{base\}/g, base);
-        el.outerHTML = html;
+
+        // Parse via <template> so all top-level sibling elements are
+        // preserved. Setting `el.outerHTML = html` can drop trailing
+        // siblings in some browsers when the include contains multiple
+        // top-level nodes (e.g. nav.partial has <nav> + <div>).
+        var tpl = document.createElement('template');
+        tpl.innerHTML = html;
+        el.parentNode.replaceChild(tpl.content, el);
+
         if (callback) callback();
+      })
+      .catch(function (err) {
+        console.error('[includes] Failed to load ' + file + ':', err);
       });
   }
 
@@ -91,6 +107,6 @@
 
   /* ── load includes ───────────────────────────────── */
 
-  loadInclude('nav-placeholder', 'nav.html', initNav);
-  loadInclude('footer-placeholder', 'footer.html');
+  loadInclude('nav-placeholder', 'nav.partial', initNav);
+  loadInclude('footer-placeholder', 'footer.partial');
 })();

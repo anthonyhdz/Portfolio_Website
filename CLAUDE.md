@@ -24,8 +24,8 @@ Product Designers, UI/UX Managers, Senior and Junior UI/UX Designers, Creatives
 │   ├── includes.js         # Dynamically loads nav and footer
 │   └── case-study-nav.js   # Sidebar smooth-scroll navigation
 ├── includes/
-│   ├── nav.html            # Shared navigation component
-│   └── footer.html         # Shared footer component
+│   ├── nav.partial         # Shared navigation component (.partial — see Dynamic Component Includes)
+│   └── footer.partial      # Shared footer component
 ├── case-studies/
 │   ├── template.html       # Boilerplate for new case studies
 │   ├── sleep-apnea.html
@@ -47,7 +47,9 @@ Two-layer CSS variable architecture in `variables.css`:
 Always use existing tokens rather than hardcoding values.
 
 ### Dynamic Component Includes
-`includes.js` fetches `nav.html` and `footer.html` at runtime. Pages set a `data-base` attribute on the `<body>` to resolve relative paths (e.g., `data-base="../"` for pages inside `case-studies/`). The `{base}` placeholder in include files gets replaced at load time.
+`includes.js` fetches `nav.partial` and `footer.partial` at runtime. Pages set a `data-base` attribute on the `<body>` to resolve relative paths (e.g., `data-base="../"` for pages inside `case-studies/`). The `{base}` placeholder in include files gets replaced at load time.
+
+The `.partial` extension (instead of `.html`) is intentional: VS Code Live Server injects its websocket reload script into every HTML response, including partial includes, which corrupts the markup mid-element and causes the parser to drop trailing siblings (e.g., the mobile menu div). Using a non-`.html` extension keeps Live Server out of the response. `npx http-server` (the documented dev server) serves the files unchanged regardless of extension.
 
 ### Accessibility Standards
 - Semantic HTML throughout (`<nav>`, `<main>`, `<article>`, `<section>`)
