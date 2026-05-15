@@ -88,8 +88,11 @@ ul  { list-style: none; }
   padding: 0;
   cursor: pointer;
   color: var(--nav-link-text);
-  width: 24px;
-  height: 24px;
+  /* 44x44 tap target (WCAG 2.5.5 / Apple HIG); negative margin keeps the
+     visual icon aligned with the page's right edge. */
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
 }
 
 .nav-hamburger .icon-close                           { display: none; }
